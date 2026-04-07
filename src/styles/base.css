@@ -1,0 +1,40 @@
+/* PURPOSE: Global reset, root variables, and
+            body-level styles for the entire app.
+   DEPENDS ON: nothing — this loads first*/
+
+/* Remove default browser spacing and enforce consistent box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/*ll colours, fonts, spacing and sizing live here as variables.
+   Every other CSS file uses these — never hardcode values elsewhere */
+:root {
+  --color-bg:        #141414;
+  --color-surface:   #1f1f1f;
+  --color-primary:   #e50914;
+  --color-text:      #ffffff;
+  --color-muted:     #aaaaaa;
+  --color-border:    #333333;
+
+  --font-main: 'Segoe UI', sans-serif;
+
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+
+  --radius:     8px;
+  --transition: 0.2s ease;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
+  min-height: 100vh;
+  line-height: 1.6;
+}

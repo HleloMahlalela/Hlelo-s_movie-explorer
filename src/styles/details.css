@@ -1,0 +1,86 @@
+/*details page wrapper*/
+.details {
+  min-height: 100vh;
+}
+
+/*backdrop image*/
+.details__backdrop {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  display: block;
+  opacity: 0.7;
+}
+
+/*details content area*/
+.details__content {
+  padding: var(--spacing-lg);
+}
+
+/*back button, returns user to previous page */
+.details__back-btn {
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  margin-bottom: var(--spacing-md);
+  transition: background-color var(--transition);
+  font-size: 0.9rem;
+}
+
+.details__back-btn:hover {
+  background-color: var(--color-surface);
+}
+
+/*movie title*/
+.details__title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+}
+
+/*tagline, italic muted text shown below the title*/
+.details__tagline {
+  color: var(--color-muted);
+  font-style: italic;
+  margin-bottom: var(--spacing-sm);
+}
+
+/*meta row, it shows rating, runtime and release year on one line*/
+.details__meta {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  margin-bottom: var(--spacing-md);
+}
+
+/*genre badges, row of small red pills showing the movie genres */
+.details__genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.details__badge {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  padding: 0.25rem 0.75rem;
+  border-radius: 99px;
+  font-size: 0.8rem;
+}
+
+/*overview Heading*/
+.details__overview-heading {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+}
+
+/*overview Text*/
+.details__overview {
+  color: var(--color-muted);
+  max-width: 700px;
+  line-height: 1.8;
+}

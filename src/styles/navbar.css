@@ -1,0 +1,41 @@
+/* Navbar Container*/
+.navbar {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+/* The app name on the left side of the navbar */
+.navbar_brand {
+  color: var(--color-primary);
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.navbar_brand:hover {
+  opacity: 0.85;
+}
+
+/* Nav Links */
+.navbar_links {
+  display: flex;
+  gap: var(--spacing-md);
+  list-style: none;
+}
+
+.navbar_links a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color var(--transition);
+}
+
+/* Highlight the link on hover */
+.navbar_links a:hover {
+  color: var(--color-primary);
+}

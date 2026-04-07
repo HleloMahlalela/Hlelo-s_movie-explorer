@@ -1,0 +1,76 @@
+/*list Container*/
+.list {
+  padding: var(--spacing-lg);
+}
+
+/*page Heading*/
+.list__title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+}
+
+/*search Input*/
+.list__search {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: var(--spacing-md);
+  transition: border-color var(--transition);
+}
+
+/*highlight the border when the input is focused*/
+.list__search:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/*genre Filter Bar, row of genre buttons the user clicks to filter movies */
+.list__genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+/*individual Genre Button*/
+.list__genre-btn {
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: 0.35rem 0.85rem;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+.list__genre-btn:hover {
+  border-color: var(--color-primary);
+}
+
+/*active state, turns red when a genre is selected*/
+.list__genre-btn--active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/*movie Grid*/
+/*responsive wrap layout that holds all the movie cards*/
+.list__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+/*status Messages used for loading and empty state text*/
+.list__status {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  padding: var(--spacing-md) 0;
+}

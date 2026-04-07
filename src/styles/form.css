@@ -1,0 +1,93 @@
+/*form page container*/
+.add-form {
+  padding: var(--spacing-lg);
+  min-height: 100vh;
+}
+
+/*form page title*/
+.add-form__title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-lg);
+}
+
+/*success message, green banner shown after a valid form submission*/
+.add-form__success {
+  background-color: #1a3a1a;
+  color: #6fcf6f;
+  border: 1px solid #6fcf6f;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius);
+  margin-bottom: var(--spacing-md);
+  font-size: 0.9rem;
+}
+
+/*form wrapper, stacks all form groups vertically with consistent spacing*/
+.add-form__form {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/*form group*/
+.add-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/*form labels*/
+.add-form__label {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+/*form inputs and textarea*/
+.add-form__input,
+.add-form__textarea {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  width: 100%;
+  transition: border-color var(--transition);
+  font-family: var(--font-main);
+}
+
+/*highlights the border when an input is focused*/
+.add-form__input:focus,
+.add-form__textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/*error state, red border on an input that failed validation */
+.add-form__input--error {
+  border-color: var(--color-primary);
+}
+
+/*error messages*/
+.add-form__error {
+  color: var(--color-primary);
+  font-size: 0.8rem;
+}
+
+/*submit btn*/
+.add-form__submit {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  border: none;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity var(--transition);
+  width: 100%;
+}
+
+.add-form__submit:hover {
+  opacity: 0.85;
+}
