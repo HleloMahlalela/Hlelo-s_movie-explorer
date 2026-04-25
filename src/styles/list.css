@@ -74,3 +74,29 @@
   font-size: 0.95rem;
   padding: var(--spacing-md) 0;
 }
+
+/*responsiveness - Tablet and Mobile */
+@media (max-width: 768px) {
+  .list {
+    padding: var(--spacing-md);
+  }
+
+  .list__title {
+    font-size: 1.4rem;
+  }
+
+  .list__search {
+    max-width: 100%;
+  }
+
+  .list__grid {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .list__genre-btn {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+  }
+}

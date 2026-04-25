@@ -39,3 +39,24 @@
 .navbar_links a:hover {
   color: var(--color-primary);
 }
+
+/* responsiveness - Tablet and Mobile */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .navbar__links {
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+  }
+
+  .navbar__links a {
+    display: block;
+    padding: 4px 0;
+  }
+}

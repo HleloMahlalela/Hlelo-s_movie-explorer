@@ -57,3 +57,18 @@
   font-size: 0.75rem;
   color: var(--color-muted);
 }
+
+/*responsiveness - Mobile */
+@media (max-width: 480px) {
+  .movie-card {
+    width: 150px;
+  }
+
+  .movie-card__poster {
+    height: 225px;
+  }
+
+  .movie-card__no-poster {
+    height: 225px;
+  }
+}

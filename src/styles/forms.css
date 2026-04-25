@@ -91,3 +91,18 @@
 .add-form__submit:hover {
   opacity: 0.85;
 }
+
+/*responsiveness - Tablet and Mobile */
+@media (max-width: 768px) {
+  .add-form {
+    padding: var(--spacing-md);
+  }
+
+  .add-form__title {
+    font-size: 1.4rem;
+  }
+
+  .add-form__form {
+    max-width: 100%;
+  }
+}

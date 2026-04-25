@@ -84,3 +84,28 @@
   max-width: 700px;
   line-height: 1.8;
 }
+
+/*responsiveness - Tablet and Mobile */
+@media (max-width: 768px) {
+  .details__backdrop {
+    max-height: 250px;
+  }
+
+  .details__title {
+    font-size: 1.6rem;
+  }
+
+  .details__content {
+    padding: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .details__title {
+    font-size: 1.3rem;
+  }
+
+  .details__meta {
+    font-size: 0.85rem;
+  }
+}
