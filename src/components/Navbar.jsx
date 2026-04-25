@@ -14,9 +14,15 @@ function Navbar() {
 
       {/*Navigation links*/}
       <ul className="navbar__links">
-        <li to="/home">Home</li>
-        <li to="/list">Browse</li>
-        <li to="/add">Add Movie</li>
+        <li> 
+          <Link to="/home">Home</Link>
+          </li>
+        <li> 
+          <Link to="/list">Browse</Link>
+        </li>
+        <li> 
+          <Link to="/add">Add Movie</Link>
+        </li>
       </ul>
     </nav>
   )
