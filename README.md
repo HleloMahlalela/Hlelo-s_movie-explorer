@@ -1,16 +1,101 @@
-# React + Vite
+# 🎬 Mosh&Chill — Movie Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Student Name: Hlelolwenkosi Mahlalela
+Student Number: 24020091
+INFS 202 — Frontend Development
+Project: Midterm Individual Project
 
-Currently, two official plugins are available:
+## Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Mosh&Chill is a React web application that allows users to browse, search and filter movies using the TMDB (The Movie Database) public API. Users can view a grid of trending movies, search by title, filter by genre,
+and click any movie to view its full details. Users can also add a movie to a personal list using the Add Movie form.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Browse trending movies on page load
+- Search movies by title
+- Filter movies by genre
+- View full movie details including backdrop, rating, runtime and overview
+- Add a movie using a validated form with controlled inputs
+- Responsive layout for desktop, tablet and mobile
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React via Vite
+- React Router DOM
+- TMDB API
+- CSS
+- JavaScript custom hooks
+
+## Project Structure
+
+src/
+├── components/
+│ ├── Navbar.jsx
+│ └── MovieCard.jsx
+├── pages/
+│ ├── Home.jsx
+│ ├── List.jsx
+│ ├── Details.jsx
+│ └── AddItem.jsx
+├── services/
+│ └── api.js
+├── styles/
+│ ├── base.css
+│ ├── base.css
+│ ├── navbar.css
+│ ├── cards.css
+│ ├── home.css
+│ ├── list.css
+│ ├── details.css
+│ └── forms.css
+├── js/
+│ ├── useMovies.js
+│ ├── useGenres.js
+│ └── utils.js
+├── App.jsx
+└── main.jsx
+
+## How to Run the Project
+
+### 1. Clone the repository
+
+git clone https://github.com/HleloMahlalela/Hlelo-s_movie-explorer.git
+
+cd Hlelo-s_movie-explorer
+
+### 2. Install dependencies
+
+npm install
+
+## 3. Set up TMDB API key
+
+Create a file called `.env` in the root of the project and add:
+
+VITE_TMDB_KEY=63de1954f65aeb2a4db81f8ddec07adc
+
+Get a free API key at: https://www.themoviedb.org/settings/api
+
+### 4. Start the development server
+
+npm run dev
+
+Open your browser and go to: `http://localhost:5173`
+
+## Required Routes
+
+| Route | Page |
+
+| `/home` | Home page |
+| `/list` | Browse movies |
+| `/details/:id` | Movie detail page |
+| `/add` | Add a movie form |
+
+## Screenshots
+
+| Page | Screenshot |
+
+| Home | ![Home](screenshots/home.png) |
+| Browse | ![Browse](screenshots/list.png) |
+| Details | ![Details](screenshots/details.png) |
+| Add Movie | ![Add Movie](screenshots/add.png) |
