@@ -18,7 +18,10 @@ const app = express()
 
 // enable CORS so the frontend can communicate with the backend
 app.use(cors({
-  origin: 'http://localhost:5173'
+  origin: [
+    'http://localhost:5173',
+    'https://hlelo-s-movie-explorer.vercel.app'
+  ]
 }))
 
 // parse incoming JSON request bodies
