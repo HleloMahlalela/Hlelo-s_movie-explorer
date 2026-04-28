@@ -1,6 +1,6 @@
 // handles all communication with backend auth endpoints.
 
-const BASE = 'http://localhost:5000/api'
+const BASE = 'https://hlelo-s-movie-explorer.onrender.com/api'
 
 // registerUser 
 // sends a POST request to register a new user
