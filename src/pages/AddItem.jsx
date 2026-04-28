@@ -1,55 +1,75 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { addMovieToBackend } from '../services/authApi'
 import '../styles/forms.css'
 
 function AddItem() {
-  //one state variable per form field
+  // one state variable per form field
   const [title, setTitle]   = useState('')
   const [genre, setGenre]   = useState('')
   const [rating, setRating] = useState('')
   const [notes, setNotes]   = useState('')
 
-  //stores validation error messages — one key per field
+  // stores validation error messages
   const [errors, setErrors] = useState({})
 
-  //controls whether the success message is shown
+  // stores server error message
+  const [serverError, setServerError] = useState('')
+
+  // controls whether the success message is shown
   const [submitted, setSubmitted] = useState(false)
 
-  //called when the form is submitted
-  const handleSubmit = (e) => {
-    //stops the browser from reloading the page on submit
+  // tracks if the form is being submitted
+  const [loading, setLoading] = useState(false)
+
+  const navigate = useNavigate()
+
+  // called when the form is submitted
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    setServerError('')
 
-    //build an errors object — add an entry for each invalid field
+    // validate fields
     const newErrors = {}
-
-    if (!title.trim()) {
-      newErrors.title = 'Movie title is required.'
-    }
-
-    if (!genre.trim()) {
-      newErrors.genre = 'Genre is required.'
-    }
-
+    if (!title.trim()) newErrors.title = 'Movie title is required.'
+    if (!genre.trim()) newErrors.genre = 'Genre is required.'
     if (!rating || rating < 1 || rating > 10) {
       newErrors.rating = 'Please enter a rating between 1 and 10.'
     }
 
-    //if any errors exist, update state and stop — do not submit
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors)
       return
     }
 
-    //validation passed — log the data and show success message
-    console.log('Movie added:', { title, genre, rating, notes })
-    setSubmitted(true)
+    // gets the token from localStorage
+    const token = localStorage.getItem('token')
 
-    // reset all fields after successful submission
-    setTitle('')
-    setGenre('')
-    setRating('')
-    setNotes('')
-    setErrors({})
+    // if no token the user is not logged in
+    if (!token) {
+      navigate('/login')
+      return
+    }
+
+    // sends the movie to the backend
+    setLoading(true)
+    const data = await addMovieToBackend(
+      { title, genre, rating: Number(rating), notes },
+      token
+    )
+    setLoading(false)
+
+    if (data.movie) {
+      // movie saved successfully
+      setSubmitted(true)
+      setTitle('')
+      setGenre('')
+      setRating('')
+      setNotes('')
+      setErrors({})
+    } else {
+      setServerError(data.message || 'Failed to add movie. Please try again.')
+    }
   }
 
   return (
@@ -58,14 +78,20 @@ function AddItem() {
       {/* page title */}
       <h2 className="add-form__title">Add a Movie</h2>
 
-      {/*success banner — shown after a valid submission */}
+      {/* success banner */}
       {submitted && (
         <div className="add-form__success">
           Movie added successfully!
         </div>
       )}
 
-      {/*form — calls handleSubmit when submitted */}
+      {/* server error banner */}
+      {serverError && (
+        <div className="add-form__success" style={{ backgroundColor: '#3a1a1a', color: '#cf6f6f', borderColor: '#cf6f6f' }}>
+          {serverError}
+        </div>
+      )}
+
       <form className="add-form__form" onSubmit={handleSubmit}>
 
         {/* movie title field */}
@@ -78,7 +104,6 @@ function AddItem() {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          {/* error message shown if title is missing */}
           {errors.title && (
             <span className="add-form__error">{errors.title}</span>
           )}
@@ -94,13 +119,12 @@ function AddItem() {
             value={genre}
             onChange={(e) => setGenre(e.target.value)}
           />
-          {/* error message shown if genre is missing */}
           {errors.genre && (
             <span className="add-form__error">{errors.genre}</span>
           )}
         </div>
 
-        {/* rating field — must be between 1 and 10 */}
+        {/* rating field */}
         <div className="add-form__group">
           <label className="add-form__label">Your Rating (1–10)</label>
           <input
@@ -112,13 +136,12 @@ function AddItem() {
             max="10"
             onChange={(e) => setRating(e.target.value)}
           />
-          {/* error message shown if rating is missing or out of range */}
           {errors.rating && (
             <span className="add-form__error">{errors.rating}</span>
           )}
         </div>
 
-        {/* notes field — optional, no validation */}
+        {/* notes field */}
         <div className="add-form__group">
           <label className="add-form__label">Notes (optional)</label>
           <textarea
@@ -131,8 +154,12 @@ function AddItem() {
         </div>
 
         {/* submit button */}
-        <button type="submit" className="add-form__submit">
-          Add Movie
+        <button
+          type="submit"
+          className="add-form__submit"
+          disabled={loading}
+        >
+          {loading ? 'Adding...' : 'Add Movie'}
         </button>
 
       </form>
