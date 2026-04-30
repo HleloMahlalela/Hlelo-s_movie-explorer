@@ -18,6 +18,7 @@ and click any movie to view its full details. Users can also add a movie to a pe
 - View full movie details including backdrop, rating, runtime and overview
 - Add a movie using a validated form with controlled inputs
 - Responsive layout for desktop, tablet and mobile
+- User registration and login with JWT authentication
 
 ## Technologies Used
 
@@ -26,35 +27,63 @@ and click any movie to view its full details. Users can also add a movie to a pe
 - TMDB API
 - CSS
 - JavaScript custom hooks
+- Node.js
+- Express
+- PostgreSQL
+- JWT Authentication
+- bcryptjs
+- CORS
+- Deployed on Vercel and Render
 
 ## Project Structure
 
-src/
-├── components/
-│ ├── Navbar.jsx
-│ └── MovieCard.jsx
-├── pages/
-│ ├── Home.jsx
-│ ├── List.jsx
-│ ├── Details.jsx
-│ └── AddItem.jsx
-├── services/
-│ └── api.js
-├── styles/
-│ ├── base.css
-│ ├── base.css
-│ ├── navbar.css
-│ ├── cards.css
-│ ├── home.css
-│ ├── list.css
-│ ├── details.css
-│ └── forms.css
-├── js/
-│ ├── useMovies.js
-│ ├── useGenres.js
-│ └── utils.js
-├── App.jsx
-└── main.jsx
+Hlelo-s_movie-explorer/
+├── backend/
+│ ├── config/
+│ │ ├── db.js
+│ │ └── db.sql
+│ ├── controllers/
+│ │ ├── authController.js
+│ │ └── movieController.js
+│ ├── middleware/
+│ │ └── authMiddleware.js
+│ ├── routes/
+│ │ ├── authRoutes.js
+│ │ └── movieRoutes.js
+│ ├── .env
+│ ├── package.json
+│ └── server.js
+├── src/
+│ ├── components/
+│ │ ├── Navbar.jsx
+│ │ └── MovieCard.jsx
+│ ├── pages/
+│ │ ├── Home.jsx
+│ │ ├── List.jsx
+│ │ ├── Details.jsx
+│ │ ├── AddItem.jsx
+│ │ ├── Login.jsx
+│ │ └── Register.jsx
+│ ├── services/
+│ │ ├── api.js
+│ │ └── authApi.js
+│ ├── styles/
+│ │ ├── base.css
+│ │ ├── navbar.css
+│ │ ├── home.css
+│ │ ├── cards.css
+│ │ ├── list.css
+│ │ ├── details.css
+│ │ ├── forms.css
+│ │ └── auth.css
+│ ├── js/
+│ │ ├── useMovies.js
+│ │ ├── useGenres.js
+│ │ └── utils.js
+│ ├── App.jsx
+│ └── main.jsx
+├── vercel.json
+└── README.md
 
 ## How to Run the Project
 
@@ -64,7 +93,7 @@ git clone https://github.com/HleloMahlalela/Hlelo-s_movie-explorer.git
 
 cd Hlelo-s_movie-explorer
 
-### 2. Install dependencies
+### 2. Install frontend dependencies
 
 npm install
 
@@ -76,11 +105,34 @@ VITE_TMDB_KEY=63de1954f65aeb2a4db81f8ddec07adc
 
 Get a free API key at: https://www.themoviedb.org/settings/api
 
-### 4. Start the development server
+### 4. Start the frontend
 
 npm run dev
 
-Open your browser and go to: `http://localhost:5173`
+Open your browser and go to:
+https://hlelo-s-movie-explorer.vercel.app
+
+### 5. Install backend dependencies
+
+cd backend
+npm install
+
+### 6. Set up backend environment
+
+Create a `.env` file inside the `backend` folder and add:
+
+PORT=5000
+DB_HOST=your_db_host
+DB_PORT=5432
+DB_NAME=mosh_chill
+DB_USER=your_db_user
+DB_PASSWORD=password123
+JWT_SECRET=your_jwt_secret
+JWT_EXPIRES_IN=7d
+
+### 7. Start the backend
+
+npm run dev
 
 ## Required Routes
 
@@ -99,3 +151,22 @@ Open your browser and go to: `http://localhost:5173`
 | Browse | ![Browse](screenshots/list.png) |
 | Details | ![Details](screenshots/details.png) |
 | Add Movie | ![Add Movie](screenshots/add.png) |
+
+## API Endpoints
+
+### Auth
+
+| Method | Endpoint | Description |
+
+| POST | /api/auth/register | Register a new user |
+| POST | /api/auth/login | Login and get JWT token |
+
+### Movies
+
+| Method | Endpoint | Description |
+
+| GET | /api/movies | Get all movies for logged in user |
+| GET | /api/movies/:id | Get a single movie |
+| POST | /api/movies | Add a new movie |
+| PUT | /api/movies/:id | Update a movie |
+| DELETE | /api/movies/:id | Delete a movie |
